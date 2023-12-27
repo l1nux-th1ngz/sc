@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Install SSH client if not already installed
+if ! command -v ssh &> /dev/null; then
+    echo "SSH client not found. Installing..."
+    sudo pacman -Sy
+    sudo pacman -S openssh
+    echo "Please press any key once the SSH client is installed."
+    read -n 1 -s -r
+fi
+
+# Variables
+USER="your_username"
+
+# Detect server IP address
+# This is just a placeholder. Replace this with the actual command or method to get your server IP.
+HOST=$(hostname -I | awk '{print $1}')
+
+# SSH into the server
+ssh ${USER}@${HOST}
